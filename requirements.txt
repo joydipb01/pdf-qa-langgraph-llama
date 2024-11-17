@@ -1,0 +1,12 @@
+typing
+torch
+transformers
+langchain
+langchain_community
+langchain_core
+langchain_text_splitters
+langgraph
+chromadb
+accelerate
+pypdf
+langchain-huggingface
