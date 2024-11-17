@@ -12,25 +12,15 @@ from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.messages import BaseMessage, AIMessage, convert_to_messages
 from langchain_core.prompts import ChatPromptTemplate
-# from langchain_core.pydantic_v1 import BaseModel, Field
 from pydantic import BaseModel, Field
 from langchain_core.retrievers import BaseRetriever
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-# from langchain_community.llms.huggingface_pipeline import HuggingFacePipeline
-# from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_huggingface import HuggingFaceEmbeddings, HuggingFacePipeline
 from langgraph.graph import END, StateGraph, add_messages
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader
 from langchain_core.output_parsers import BaseOutputParser
 
 MAX_RETRIES = 3
-
-# Index 3 pages from Pandas user guides
-# SOURCE_URLS = [
-#     'https://pandas.pydata.org/docs/user_guide/indexing.html',
-#     'https://pandas.pydata.org/docs/user_guide/groupby.html',
-#     'https://pandas.pydata.org/docs/user_guide/merging.html'
-# ]
 
 DIRECTORY = "docs/"
 
@@ -56,16 +46,6 @@ text_pipeline = pipeline(
 )
 
 embeddings = HuggingFaceEmbeddings(model_name = "sentence-transformers/all-mpnet-base-v2")
-
-# class PandasDocsLoader(web_base.WebBaseLoader):
-#     def lazy_load(self) -> Iterator[Document]:
-#         """Lazy load text from the url(s) in web_path."""
-#         for path in self.web_paths:
-#             soup = self._scrape(path, bs_kwargs=self.bs_kwargs)
-#             text = soup.get_text(**self.bs_get_text_kwargs)
-#             text = NEWLINE_RE.sub("\n", text)     
-#             metadata = web_base._build_metadata(soup, path)
-#             yield Document(page_content=text, metadata=metadata)
 
 
 def prepare_documents(folder_path: str) -> list[Document]:
